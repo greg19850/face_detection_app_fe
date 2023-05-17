@@ -1,15 +1,8 @@
-body {
-	margin: 0;
-	padding: 0;
-	font-family: 'Courier New', Courier, monospace;
+.Tilt {
 	background: linear-gradient(
 		111.1deg,
 		rgb(0, 40, 70) -4.8%,
 		rgb(255, 115, 115) 82.7%,
 		rgb(255, 175, 123) 97.2%
 	);
-}
-
-button {
-	cursor: pointer;
 }
