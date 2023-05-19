@@ -7,7 +7,7 @@ import '../styles/ImageLinkForm.css';
 
 
 
-function ImageLinkForm({ user, imgURL, setImgURL }) {
+function ImageLinkForm({ user, setImgURL }) {
   const [input, setInput] = useState('');
 
 
@@ -17,6 +17,7 @@ function ImageLinkForm({ user, imgURL, setImgURL }) {
   }
 
   function submitImage() {
+    setImgURL(input);
 
     const IMAGE_URL = input;
 
@@ -50,8 +51,8 @@ function ImageLinkForm({ user, imgURL, setImgURL }) {
     // this will default to the latest version_id
 
     fetch(`https://api.clarifai.com/v2/models/face-detection/versions/6dc7e46bc9124c5c8824be4822abe105/outputs`, requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
+      .then(response => response.json())
+      .then(result => console.log(result.outputs[0].data.regions[0].region_info.bounding_box))
       .catch(error => console.log('error', error));
   }
 
