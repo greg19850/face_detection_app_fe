@@ -18,7 +18,7 @@ function Logo() {
   return (
     <div className='ma4 mt0'>
       <Tilt className='Tilt' options={defaultOptions} style={{ height: 150, width: 150 }}>
-        <div className='tilt-inner pa3'><img style={{ paddingTop: '10px', width: '90%' }} src={brain} alt="brain" /></div>
+        <div className='tilt-inner pa3'><img style={{ paddingTop: '10px', width: '100%' }} src={brain} alt="brain" /></div>
       </Tilt>
     </div>
   );

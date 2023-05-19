@@ -2,12 +2,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Courier New', Courier, monospace;
-	background: linear-gradient(
-		111.1deg,
-		rgb(0, 40, 70) -4.8%,
-		rgb(255, 115, 115) 82.7%,
-		rgb(255, 175, 123) 97.2%
-	);
+	background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114));
 }
 
 button {
