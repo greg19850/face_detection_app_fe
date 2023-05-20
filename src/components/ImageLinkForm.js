@@ -11,6 +11,7 @@ function ImageLinkForm({ setImgURL, setImgBox }) {
   }
 
   function submitImage() {
+    setImgBox([]);
     setImgURL(input);
 
     const IMAGE_URL = input;
@@ -48,21 +49,26 @@ function ImageLinkForm({ setImgURL, setImgBox }) {
       .then(response => response.json())
       .then(data => calculatFaceLocation(data))
       .catch(error => console.log('error', error));
+
+    setInput('');
   }
 
   function calculatFaceLocation(data) {
-    const capturedFace = data.outputs[0].data.regions[0].region_info.bounding_box;
-
+    const capturedFaces = data.outputs[0].data.regions;
     const image = document.getElementById('inputImage');
     const imgWidth = image.width;
     const imgHeight = image.height;
-    const faceBox = {
-      leftCol: capturedFace.left_col * imgWidth,
-      topRow: capturedFace.top_row * imgHeight,
-      rightCol: imgWidth - (capturedFace.right_col * imgWidth),
-      bottomRow: imgHeight - (capturedFace.bottom_row * imgHeight),
-    };
-    setImgBox(faceBox);
+    capturedFaces.forEach(face => {
+      const faceCoordinates = face.region_info.bounding_box;
+      const faceBox = {
+        leftCol: faceCoordinates.left_col * imgWidth,
+        topRow: faceCoordinates.top_row * imgHeight,
+        rightCol: imgWidth - (faceCoordinates.right_col * imgWidth),
+        bottomRow: imgHeight - (faceCoordinates.bottom_row * imgHeight),
+      };
+      setImgBox((currBox) => [...currBox, faceBox]);
+    });
+
   }
 
   return (
