@@ -10,6 +10,7 @@ function ImageLinkForm({ setImgURL, setImgBox }) {
 
   }
 
+  // use of clarifai API connection template
   function submitImage() {
     setImgBox([]);
     setImgURL(input);
@@ -53,6 +54,7 @@ function ImageLinkForm({ setImgURL, setImgBox }) {
     setInput('');
   }
 
+  // calculate coordinates of box around faces
   function calculatFaceLocation(data) {
     const capturedFaces = data.outputs[0].data.regions;
     const image = document.getElementById('inputImage');

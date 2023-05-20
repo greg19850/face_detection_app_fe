@@ -2,6 +2,8 @@ import { Tilt } from 'react-tilt';
 import brain from '../img/brain.png';
 import '../styles/Logo.css';
 
+//Logo moving on hover
+
 const defaultOptions = {
   reverse: false,  // reverse the tilt direction
   max: 35,     // max tilt rotation (degrees)

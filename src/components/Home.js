@@ -7,7 +7,7 @@ import FaceRecognition from './FaceRecognition';
 
 function Home() {
   const [imgURL, setImgURL] = useState('');
-  const [imgBox, setImgBox] = useState([]);
+  const [imgBox, setImgBox] = useState([]); //Face box for detected faces
 
   return (
     <div>
