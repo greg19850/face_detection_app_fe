@@ -1,13 +1,7 @@
 import { useState } from 'react';
 import '../styles/ImageLinkForm.css';
 
-// const app = new Clarifai.App({
-//   apiKey: '92c48b7fd0a74afdb244f42714e26d27'
-// });
-
-
-
-function ImageLinkForm({ user, setImgURL }) {
+function ImageLinkForm({ setImgURL, setImgBox }) {
   const [input, setInput] = useState('');
 
 
@@ -52,10 +46,24 @@ function ImageLinkForm({ user, setImgURL }) {
 
     fetch(`https://api.clarifai.com/v2/models/face-detection/versions/6dc7e46bc9124c5c8824be4822abe105/outputs`, requestOptions)
       .then(response => response.json())
-      .then(result => console.log(result.outputs[0].data.regions[0].region_info.bounding_box))
+      .then(data => calculatFaceLocation(data))
       .catch(error => console.log('error', error));
   }
 
+  function calculatFaceLocation(data) {
+    const capturedFace = data.outputs[0].data.regions[0].region_info.bounding_box;
+
+    const image = document.getElementById('inputImage');
+    const imgWidth = image.width;
+    const imgHeight = image.height;
+    const faceBox = {
+      leftCol: capturedFace.left_col * imgWidth,
+      topRow: capturedFace.top_row * imgHeight,
+      rightCol: imgWidth - (capturedFace.right_col * imgWidth),
+      bottomRow: imgHeight - (capturedFace.bottom_row * imgHeight),
+    };
+    setImgBox(faceBox);
+  }
 
   return (
     <div>
@@ -73,7 +81,6 @@ function ImageLinkForm({ user, setImgURL }) {
             onClick={submitImage}
           >Detect</button>
         </div>
-
       </div>
     </div>
   );
