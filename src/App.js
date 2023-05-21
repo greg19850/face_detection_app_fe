@@ -6,6 +6,7 @@ import Particle from './components/Particle';
 import SignIn from './components/SignIn';
 import Register from './components/Register';
 import Home from './components/Home';
+import { getUser } from './utils/api';
 
 
 import './App.css';
@@ -13,7 +14,13 @@ import './App.css';
 
 function App() {
 
-  const [isSignedIn, setIsSignedIn] = useState(true);
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
+  // useEffect(() => {
+  //   getUser(id).then((data) => {
+  //     console.log(data);
+  //   });
+  // }, [id]);
 
 
   const handleSignIn = (value) => {
@@ -28,7 +35,7 @@ function App() {
         handleSignIn={handleSignIn}
       />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home isSignedIn={isSignedIn} />} />
         <Route path="/signin" element={<SignIn handleSignIn={handleSignIn} />} />
         <Route path="/register" element={<Register handleSignIn={handleSignIn} />} />
       </Routes>

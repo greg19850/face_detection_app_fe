@@ -6,7 +6,7 @@ function Navigation({ isSignedIn, handleSignIn }) {
   if (isSignedIn) {
     return (
       <nav style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Link onClick={() => handleSignIn(false)} to="/signin" className="f3 link dim black underline pa3 pointer">Sign Out</Link>
+        <Link onClick={() => handleSignIn(false)} to="/" className="f3 link dim black underline pa3 pointer">Sign Out</Link>
       </nav>
     );
   } else {
