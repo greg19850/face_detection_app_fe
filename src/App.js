@@ -15,12 +15,13 @@ import './App.css';
 function App() {
 
   const [isSignedIn, setIsSignedIn] = useState(false);
-
-  // useEffect(() => {
-  //   getUser(id).then((data) => {
-  //     console.log(data);
-  //   });
-  // }, [id]);
+  const [loggedUser, setLoggedUser] = useState({
+    id: "",
+    name: "",
+    email: "",
+    entries: 0,
+    joined: ""
+  });
 
 
   const handleSignIn = (value) => {
@@ -35,9 +36,17 @@ function App() {
         handleSignIn={handleSignIn}
       />
       <Routes>
-        <Route path="/" element={<Home isSignedIn={isSignedIn} />} />
-        <Route path="/signin" element={<SignIn handleSignIn={handleSignIn} />} />
-        <Route path="/register" element={<Register handleSignIn={handleSignIn} />} />
+        <Route path="/"
+          element={
+            <Home
+              loggedUser={loggedUser}
+              setLoggedUser={setLoggedUser}
+              isSignedIn={isSignedIn}
+            />
+          }
+        />
+        <Route path="/signin" element={<SignIn handleSignIn={handleSignIn} setLoggedUser={setLoggedUser} />} />
+        <Route path="/register" element={<Register handleSignIn={handleSignIn} setLoggedUser={setLoggedUser} />} />
       </Routes>
     </div>
   );

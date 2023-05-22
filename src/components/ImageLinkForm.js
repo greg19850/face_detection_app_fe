@@ -1,13 +1,13 @@
 import { useState } from 'react';
+import { imageSubmit } from '../utils/api';
+
 import '../styles/ImageLinkForm.css';
 
-function ImageLinkForm({ setImgURL, setImgBox }) {
+function ImageLinkForm({ loggedUser, setLoggedUser, setImgURL, setImgBox }) {
   const [input, setInput] = useState('');
-
 
   function handleInputChange(e) {
     setInput(e.target.value);
-
   }
 
   // use of clarifai API connection template
@@ -48,7 +48,18 @@ function ImageLinkForm({ setImgURL, setImgBox }) {
 
     fetch(`https://api.clarifai.com/v2/models/face-detection/versions/6dc7e46bc9124c5c8824be4822abe105/outputs`, requestOptions)
       .then(response => response.json())
-      .then(data => calculatFaceLocation(data))
+      .then(data => {
+        if (data) {
+          imageSubmit(loggedUser.id)
+            .then(user => {
+              setLoggedUser(currentUser => {
+                return { ...currentUser, entries: user.entries };
+              });
+            }
+            );
+        }
+        calculatFaceLocation(data);
+      })
       .catch(error => console.log('error', error));
 
     setInput('');

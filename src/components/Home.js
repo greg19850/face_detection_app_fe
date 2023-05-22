@@ -5,7 +5,7 @@ import ImageLinkForm from './ImageLinkForm';
 import Stats from './Stats';
 import FaceRecognition from './FaceRecognition';
 
-function Home({ isSignedIn }) {
+function Home({ loggedUser, setLoggedUser, isSignedIn }) {
   const [imgURL, setImgURL] = useState('');
   const [imgBox, setImgBox] = useState([]); //Face box for detected faces
 
@@ -13,8 +13,10 @@ function Home({ isSignedIn }) {
     isSignedIn ?
       <div>
         <Logo />
-        <Stats />
+        <Stats loggedUser={loggedUser} />
         <ImageLinkForm
+          loggedUser={loggedUser}
+          setLoggedUser={setLoggedUser}
           setImgURL={setImgURL}
           setImgBox={setImgBox}
         />

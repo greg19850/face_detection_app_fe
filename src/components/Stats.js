@@ -1,7 +1,7 @@
-function Stats() {
+function Stats({ loggedUser }) {
   return (
     <div className="white f3">
-      {'Greg, you scanned 5 faces'}
+      {`${loggedUser.name}, you scanned ${loggedUser.entries} faces`}
     </div>
   );
 }

@@ -1,15 +1,23 @@
-// import axios from "axios";
+import axios from "axios";
 
-// const faceDetectApi = axios.create({
-//   baseURL: 'http://localhost:3001'
-// });
+const faceDetectApi = axios.create({
+  baseURL: 'http://localhost:3001'
+});
 
-// export const getUser = (id) => {
-//   return faceDetectApi.get('/articles', {
-//     params: {
-//       id
-//     }
-//   }).then(({ data }) => {
-//     console.log(data);
-//   });
-// };
+export const signInUser = (email, password) => {
+  return faceDetectApi.post('/signin', { email, password }).then(({ data }) => {
+    return data;
+  });
+};
+
+export const registerUser = (name, email, password) => {
+  return faceDetectApi.post('/register', { name, email, password }).then(({ data }) => {
+    return data;
+  });
+};
+
+export const imageSubmit = (id) => {
+  return faceDetectApi.put('/image', { id }).then(({ data }) => {
+    return data;
+  });
+};

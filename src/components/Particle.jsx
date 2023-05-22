@@ -13,15 +13,15 @@ function Particle() {
 		await loadFull(engine);
 	}, []);
 
-	const particlesLoaded = useCallback(async (container) => {
-		await console.log(container);
-	}, []);
+	// const particlesLoaded = useCallback(async (container) => {
+	// 	await console.log(container);
+	// }, []);
 
 	return (
 		<Particles
 			id="tsparticles"
 			init={particlesInit}
-			loaded={particlesLoaded}
+			// loaded={particlesLoaded}
 			options={{
 				fullScreen: {
 					enable: true,
@@ -76,7 +76,7 @@ function Particle() {
 							default: 'bounce',
 						},
 						random: false,
-						speed: 2,
+						speed: 1,
 						straight: false,
 					},
 					number: {
@@ -84,13 +84,13 @@ function Particle() {
 							enable: true,
 							area: 800,
 						},
-						value: 50,
+						value: 100,
 					},
 					opacity: {
 						value: 0.5,
 					},
 					shape: {
-						type: 'circle',
+						type: 'none',
 					},
 					size: {
 						value: { min: 1, max: 5 },
