@@ -5,7 +5,7 @@ import ImageLinkForm from './ImageLinkForm';
 import Stats from './Stats';
 import FaceRecognition from './FaceRecognition';
 
-function Home({ loggedUser, setLoggedUser, isSignedIn }) {
+function Home({ loggedUser, setLoggedUser, isSignedIn, signinMessage }) {
   const [imgURL, setImgURL] = useState('');
   const [imgBox, setImgBox] = useState([]); //Face box for detected faces
 
@@ -26,7 +26,7 @@ function Home({ loggedUser, setLoggedUser, isSignedIn }) {
         />
       </div> :
       <div className='welcome-msg'>
-        <h2 className="f2" >Welcome! Please sign in</h2>
+        <h2 className="f2" >{signinMessage}</h2>
       </div>
   );
 }

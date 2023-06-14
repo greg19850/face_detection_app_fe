@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Navigation from './components/Navigation';
@@ -6,7 +6,7 @@ import Particle from './components/Particle';
 import SignIn from './components/SignIn';
 import Register from './components/Register';
 import Home from './components/Home';
-import { getUser } from './utils/api';
+// import { getUser } from './utils/api';
 
 
 import './App.css';
@@ -22,6 +22,7 @@ function App() {
     entries: 0,
     joined: ""
   });
+  const [signinMessage, setSigninMessage] = useState('Welcome! Please sign in')
 
 
   const handleSignIn = (value) => {
@@ -42,11 +43,12 @@ function App() {
               loggedUser={loggedUser}
               setLoggedUser={setLoggedUser}
               isSignedIn={isSignedIn}
+              signinMessage={signinMessage}
             />
           }
         />
-        <Route path="/signin" element={<SignIn handleSignIn={handleSignIn} setLoggedUser={setLoggedUser} />} />
-        <Route path="/register" element={<Register handleSignIn={handleSignIn} setLoggedUser={setLoggedUser} />} />
+        <Route path="/signin" element={<SignIn handleSignIn={handleSignIn} setLoggedUser={setLoggedUser} setSigninMessage={setSigninMessage} />} />
+        <Route path="/register" element={<Register handleSignIn={handleSignIn} setLoggedUser={setLoggedUser} setSigninMessage={setSigninMessage} />} />
       </Routes>
     </div>
   );

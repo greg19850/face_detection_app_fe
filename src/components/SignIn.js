@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { signInUser } from "../utils/api";
 
-function SignIn({ handleSignIn, setLoggedUser }) {
+function SignIn({ handleSignIn, setLoggedUser, setSigninMessage }) {
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
 
@@ -27,8 +27,10 @@ function SignIn({ handleSignIn, setLoggedUser }) {
           joined: user.joined
         });
         handleSignIn(true);
+        setSigninMessage('Welcome! Please sign in')
       }
     }).catch(err => {
+      setSigninMessage('Incorrect Login Details!')
       console.log('Error!');
     });
   };

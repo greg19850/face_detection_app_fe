@@ -1,7 +1,7 @@
 function Stats({ loggedUser }) {
   return (
-    <div className="white f3">
-      {`${loggedUser.name}, you scanned ${loggedUser.entries} faces`}
+    <div className="white f2">
+      {`${loggedUser.name}, your current number of scanned images is: ${loggedUser.entries}`}
     </div>
   );
 }

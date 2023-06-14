@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { registerUser } from "../utils/api";
 
-function Register({ handleSignIn, setLoggedUser }) {
+function Register({ handleSignIn, setLoggedUser, setSigninMessage  }) {
   const [newUserEmail, setNewUserEmail] = useState('');
   const [newUserPassword, setNewUserPassword] = useState('');
   const [newUserName, setNewUserName] = useState('');
@@ -19,7 +19,6 @@ function Register({ handleSignIn, setLoggedUser }) {
 
   const registerNewUser = () => {
     registerUser(newUserName, newUserEmail, newUserPassword).then((user) => {
-      console.log(user);
       if (user.id) {
         setLoggedUser({
           id: user.id,
@@ -31,6 +30,7 @@ function Register({ handleSignIn, setLoggedUser }) {
         handleSignIn(true);
       }
     }).catch(err => {
+      setSigninMessage('Incorrect Registration Details!')
       console.log('Error!');
     });
   };
