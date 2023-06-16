@@ -6,7 +6,6 @@ import Particle from './components/Particle';
 import SignIn from './components/SignIn';
 import Register from './components/Register';
 import Home from './components/Home';
-// import { getUser } from './utils/api';
 
 
 import './App.css';

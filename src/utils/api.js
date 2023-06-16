@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const faceDetectApi = axios.create({
-  baseURL: 'http://localhost:3001'
+  baseURL: 'https://sleepy-retreat-58830-a938d4889535.herokuapp.com'
 });
 
 export const signInUser = (email, password) => {
