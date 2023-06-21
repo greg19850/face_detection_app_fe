@@ -20,9 +20,12 @@ function Register({ handleSignIn, setLoggedUser, setSigninMessage  }) {
   const registerNewUser = () => {
     registerUser(newUserName, newUserEmail, newUserPassword).then((user) => {
       if (user.id) {
+        const str = user.name
+        const capName = str.charAt(0).toUpperCase() + str.slice(1);
+        
         setLoggedUser({
           id: user.id,
-          name: user.name,
+          name: capName,
           email: user.email,
           entries: 0,
           joined: user.joined
